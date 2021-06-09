@@ -1,0 +1,27 @@
+textarea {
+  width: 100%;
+  resize: none;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td {
+  width: 40px;
+  height: 40px;
+}
+
+.row {
+  display: grid;
+  grid-template-areas:
+    'input input input input input none'
+    'inputObj inputObj inputObj inputObj inputObj none'
+    'roomStart roomStart roomStart roomStart roomStart none'
+    'button button button button button none'
+    'output output output map map map';
+  grid-gap: 10px;
+}

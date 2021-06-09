@@ -1,0 +1,56 @@
+<mat-toolbar color="primary">
+  <span>PATH_finder</span>
+</mat-toolbar>
+
+<div class="row">
+  <textarea style="grid-area: input"
+      placeholder="Insert valid JSON"
+      rows="5"
+      [(ngModel)]="jsonInput"
+    ></textarea>
+
+  <textarea style="grid-area: inputObj"
+      placeholder="Insert valid object to find"
+      rows="5"
+      [(ngModel)]="objToFindInput"
+    ></textarea>
+
+  <input style="grid-area: roomStart" type="number" placeholder="ID starting room" [(ngModel)]="idToStart">
+
+  <button (click)="generateOutput()" style="grid-area: button">
+    Generate Output
+  </button>
+
+  <mat-card *ngIf="!err.value" style="grid-area: output">
+    <h2>OUTPUT</h2>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Room</th>
+        <th>Object Collected</th>
+      </tr>
+      <tr *ngFor="let room of path">
+        <td>{{room.id}}</td>
+        <td>{{room.name}}</td>
+        <td>
+          <p *ngFor="let obj of room.objects">{{obj.name}} </p>
+        </td>
+      </tr>
+    </table>
+  </mat-card>
+
+  <mat-card *ngIf="!err.value" style="grid-area: map; text-align: center">
+    <h2>Visual Map</h2>
+    <h3>N</h3>
+    <table>
+      <tr *ngFor="let row of map">
+        <td *ngFor="let col of row">
+          {{col.name}}
+        </td>
+      </tr>
+    </table>
+    <h3>S</h3>
+  </mat-card>
+</div>
+
+<p *ngIf="err.value">{{err.message}}</p>
